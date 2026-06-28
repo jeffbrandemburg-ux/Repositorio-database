@@ -34,15 +34,15 @@ quantidade INT,
 preco DECIMAL(10,2),
 data_pedido DATE,
 status VARCHAR(50),
-FOREIGN KEY (id_cliente) references id_cliente,
-FOREIGN KEY(id_funcionario) references id_funcionario,
-FOREIGN KEY(id_produto) references id_produto
+id_cliente INT, FOREIGN KEY (id_cliente) references CLIENTES (id_cliente),
+id_funcionario INT, FOREIGN KEY(id_funcionario) references FUNCIONARIOS (id_funcionario),
+id_produto INT, FOREIGN KEY(id_produto) references PRODUTOS (id_produto)
 );
 CREATE TABLE INFO_PRODUTOS(
 id_info INT PRIMARY KEY AUTO_INCREMENT,
 ingredientes TEXT,
 fornecedor VARCHAR(255),
-FOREIGN KEY(id_produto) references id_produto
+id_produto INT, FOREIGN KEY(id_produto) references PRODUTOS (id_produto)
 );
 
 INSERT INTO FUNCIONARIOS(nome, CPF, data_nascimento, endereco, telefone, email, cargo, salario, data_admissao) VALUES
@@ -137,7 +137,36 @@ INSERT INTO INFO_PRODUTOS(id_produto, ingredientes, fornecedor) VALUES
 						(19, 'Maracujá, creme de leite, açúcar', 'Hortifruti Natural da Terra e Laticínios Vale do Sereno'),
 						(20, 'Leite condensado, ovos, açúcar', 'Laticínios Vale do Sereno');
 						
-INSERT INTO PEDIDOS(quantidade, preco, data_pedido, status) VALUES 
+INSERT INTO PEDIDOS(id_cliente, id_funcionario, id_produto, quantidade, data_pedido, status) VALUES 
+					(1, 4, 1, 2, '2024-07-01', 'Concluído'),
+					(3, 4, 2, 1, '2024-07-01', 'Concluído'),
+					(6, 7, 3, 1, '2024-07-01', 'Concluído'),
+					(8, 7, 4, 3, '2024-07-01', 'Concluído'),
+					(10, 8, 5, 2, '2024-07-02', 'Pendente'),
+					(15, 8, 6, 4, '2024-07-02', 'Concluído'),
+					(22, 4, 7, 3, '2024-07-02', 'Concluído'),
+					(18, 4, 8, 2, '2024-07-02', 'Concluído'),
+					(4, 7, 9, 5, '2024-07-02', 'Concluído'),
+					(6, 7, 10, 1, '2024-07-03', 'Concluído'),
+					(9, 8, 11, 3, '2024-07-03', 'Concluído'),
+					(11, 8, 12, 1, '2024-07-03', 'Concluído'),
+					(24, 4, 13, 2, '2024-07-03', 'Concluído'),
+					(27, 4, 14, 1, '2024-07-03', 'Concluído'),
+					(17, 7, 15, 2, '2024-07-03', 'Concluído'),
+					(7, 7, 16, 3, '2024-07-04', 'Concluído'),
+					(13, 8, 17, 2, '2024-07-04', 'Concluído'),
+					(25, 8, 18, 4, '2024-07-04', 'Concluído'),
+					(22, 4, 19, 1, '2024-07-04', 'Concluído'),
+					(2, 4, 20, 2, '2024-07-04', 'Concluído'),
+					(8, 7, 2, 1, '2024-07-04', 'Concluído'),
+					(11, 7, 3, 2, '2024-07-05', 'Concluído'),
+					(18, 8, 4, 3, '2024-07-05', 'Concluído'),
+					(22, 8, 5, 1, '2024-07-05', 'Concluído'),
+					(19, 4, 6, 4, '2024-07-05', 'Concluído'),
+					(28, 4, 7, 3, '2024-07-05', 'Concluído'),
+					(1, 7, 8, 2, '2024-07-05', 'Concluído'),
+					(7, 7, 9, 5, '2024-07-05', 'Concluído'),
+					(19, 8, 10, 1, '2024-07-05', 'Concluído'),
 					(15, 8, 11, 3, '2024-07-05', 'Concluído'),
 					(24, 4, 12, 1, '2024-07-05', 'Concluído'),
 					(12, 4, 13, 2, '2024-07-05', 'Concluído'),
